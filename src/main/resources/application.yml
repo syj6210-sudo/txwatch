@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: txwatch
+  datasource:
+    url: jdbc:h2:mem:txwatch;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+txwatch:
+  zone: Asia/Seoul
+  ctr-generation-cron: "0 30 0 * * *"
+  detection:
+    lookback-days: 90
+    ctr-threshold: 10000000
+    structuring-window-days: 5
+    structuring-min-count: 3
+    structuring-floor-ratio: 0.7
+    velocity-window-minutes: 60
+    velocity-max-count: 10
+    high-risk-countries: [IR, KP, MM]
+    high-risk-country-min-amount: 1000000
+    deviation-min-history: 10
+    deviation-sigma: 3.0
+    deviation-min-amount: 5000000
